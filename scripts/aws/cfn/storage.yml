@@ -6,6 +6,10 @@ Parameters:
     Type: String
     Description: Nome dell'ambiente destinazione
 
+  TemplateBucketBaseUrl:
+    Type: String
+    Description: URL da cui caricare i frammenti di template di infrastruttura
+
 Resources:
 
   Keyspace:
