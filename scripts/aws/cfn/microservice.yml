@@ -66,7 +66,9 @@ Resources:
         ContainerImageURI: !Sub '${ContainerImageUri}'
         ContainerEnvEntry1: !Sub 'PROJECT_NAME=${ProjectName}'
         ContainerEnvEntry2: !Sub 'QUEUE_NAME=${DeliveryPushInputsQueueName}'
-        MappedPaths: '/example/*,/example-private/*'
+        ContainerEnvEntry3: 'REQUIRED_ROOT_PATH=example1'
+        ContainerEnvEntry4: !Sub 'BucketName=${DocumentBucketName}'
+        MappedPaths: '/example1/*,/example1-private/*'
         ECSClusterName: !Ref ECSClusterName
         Subnets: !Ref SubnetsIds
         VpcId: !Ref VpcId
@@ -76,7 +78,7 @@ Resources:
   ExampleMicroserviceTaskPolicy:
     Type: AWS::IAM::Policy
     Properties:
-      PolicyName: !Sub '${ProjectName}-delivery-CustomTaskPolicy'
+      PolicyName: !Sub '${ProjectName}-example1-CustomTaskPolicy'
       Roles:
         - !GetAtt ExampleMicroservice.Outputs.TaskRoleName
       PolicyDocument:
@@ -120,12 +122,12 @@ Resources:
 
 
   # Expose Example public API with API-GW
-  PnDeliveryPublicAPI:
+  ExampleMicroservicePublicAPI:
     Type: AWS::CloudFormation::Stack
     Properties:
       TemplateURL: !Sub "${TemplateBucketBaseUrl}/fragments/api-gw-expose-service.yaml"
       Parameters:
-        MicroServiceUniqueName: !Sub '${ProjectName}-delivery'
-        ServiceApiPath: 'delivery'
+        MicroServiceUniqueName: !Sub '${ProjectName}-example1'
+        ServiceApiPath: 'example1'
         NetworkLoadBalancerLink: !Ref NetworkLoadBalancerLink
         ApplicationLoadBalancerDomain: !Ref ApplicationLoadBalancerDomain
