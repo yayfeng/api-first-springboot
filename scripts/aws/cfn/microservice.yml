@@ -73,6 +73,7 @@ Resources:
         Subnets: !Ref SubnetsIds
         VpcId: !Ref VpcId
         LoadBalancerListenerArn: !Ref ApplicationLoadBalancerListenerArn
+        LoadbalancerRulePriority: 2
 
   # Grant operational rights to Example microservice
   ExampleMicroserviceTaskPolicy:
