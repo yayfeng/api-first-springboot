@@ -68,7 +68,7 @@ Resources:
         ContainerEnvEntry2: !Sub 'QUEUE_NAME=${DeliveryPushInputsQueueName}'
         MappedPaths: '/example/*,/example-private/*'
         ECSClusterName: !Ref ECSClusterName
-        Subnets: !Ref Subnets
+        Subnets: !Ref SubnetsIds
         VpcId: !Ref VpcId
         LoadBalancerListenerArn: !Ref ApplicationLoadBalancerListenerArn
 
