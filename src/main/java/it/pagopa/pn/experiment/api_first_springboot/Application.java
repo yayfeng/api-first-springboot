@@ -19,7 +19,7 @@ public class Application {
     }
 
     @RestController
-    @RequestMapping("/delivery/")
+    @RequestMapping("/example/")
     public static class RootController {
 
         @GetMapping("info")

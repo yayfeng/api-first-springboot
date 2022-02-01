@@ -16,7 +16,7 @@
         <java.version>11</java.version>
         <spring.cloud-version>2020.0.3</spring.cloud-version>
         <spring.boot-version>2.5.2</spring.boot-version>
-        <git.commit.version>undef</git.commit.version>
+        <vcs.commit.id>undef</vcs.commit.id>
     </properties>
 
     <dependencyManagement>
@@ -67,7 +67,7 @@
                 <configuration>
                     <image>
                         <env>
-                            <BP_IMAGE_LABELS>GIT_COMMIT_VERSION=${git.commit.version}</BP_IMAGE_LABELS>
+                            <BP_IMAGE_LABELS>VCS_COMMIT_ID=${vcs.commit.id}</BP_IMAGE_LABELS>
                         </env>
                     </image>
                 </configuration>
