@@ -39,6 +39,6 @@ Outputs:
 
   DocumentsBucketArn:
     Description: ARN of bucket going to contains notification documents
-    Value: !Sub '${DocumentBucket.Arn}
+    Value: !Sub '${DocumentBucket.Arn}'
 
 
