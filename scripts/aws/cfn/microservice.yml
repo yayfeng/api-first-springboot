@@ -60,7 +60,7 @@ Resources:
     Properties:
       TemplateURL: !Sub "${TemplateBucketBaseUrl}/fragments/ecs-service.yaml"
       Parameters:
-        MicroServiceUniqueName: !Sub '${ProjectName}-delivery'
+        MicroServiceUniqueName: !Sub '${ProjectName}-example1'
         CpuValue: 1024
         MemoryAmount: 2GB
         ContainerImageURI: !Sub '${ContainerImageUri}'
@@ -73,6 +73,7 @@ Resources:
         Subnets: !Ref SubnetsIds
         VpcId: !Ref VpcId
         LoadBalancerListenerArn: !Ref ApplicationLoadBalancerListenerArn
+        LoadbalancerRulePriority: 1
 
   # Grant operational rights to Example microservice
   ExampleMicroserviceTaskPolicy:
