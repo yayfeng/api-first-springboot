@@ -15,7 +15,7 @@ Resources:
   Keyspace:
     Type: AWS::Cassandra::Keyspace
     Properties:
-      KeyspaceName: !Sub '${ProjectName}_simple'
+      KeyspaceName: !Sub '${ProjectName}_simple2'
 
   SimpleTable:
     Type: AWS::Cassandra::Table
