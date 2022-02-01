@@ -60,7 +60,7 @@ Resources:
     Properties:
       TemplateURL: !Sub "${TemplateBucketBaseUrl}/fragments/ecs-service.yaml"
       Parameters:
-        MicroServiceUniqueName: !Sub '${ProjectName}-delivery'
+        MicroServiceUniqueName: !Sub '${ProjectName}-example2'
         CpuValue: 1024
         MemoryAmount: 2GB
         ContainerImageURI: !Sub '${ContainerImageUri}'
