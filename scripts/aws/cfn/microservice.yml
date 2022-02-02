@@ -64,15 +64,15 @@ Resources:
     Properties:
       TemplateURL: !Sub "${TemplateBucketBaseUrl}/fragments/ecs-service.yaml"
       Parameters:
-        MicroServiceUniqueName: !Sub '${ProjectName}-example2'
+        MicroServiceUniqueName: !Sub '${ProjectName}-example${MicroserviceNumber}'
         CpuValue: 1024
         MemoryAmount: 2GB
         ContainerImageURI: !Sub '${ContainerImageUri}'
         ContainerEnvEntry1: !Sub 'PROJECT_NAME=${ProjectName}'
         ContainerEnvEntry2: !Sub 'QUEUE_NAME=${DeliveryPushInputsQueueName}'
-        ContainerEnvEntry3: 'REQUIRED_ROOT_PATH=example2'
+        ContainerEnvEntry3: !Sub 'REQUIRED_ROOT_PATH=example${MicroserviceNumber}'
         ContainerEnvEntry4: !Sub 'BucketName=${DocumentBucketName}'
-        MappedPaths: '/example2/*,/example2-private/*'
+        MappedPaths: !Sub '/example${MicroserviceNumber}/*,/example${MicroserviceNumber}-private/*'
         ECSClusterName: !Ref ECSClusterName
         Subnets: !Ref SubnetsIds
         VpcId: !Ref VpcId
@@ -83,7 +83,7 @@ Resources:
   ExampleMicroserviceTaskPolicy:
     Type: AWS::IAM::Policy
     Properties:
-      PolicyName: !Sub '${ProjectName}-example2-CustomTaskPolicy'
+      PolicyName: !Sub '${ProjectName}-example${MicroserviceNumber}-CustomTaskPolicy'
       Roles:
         - !GetAtt ExampleMicroservice.Outputs.TaskRoleName
       PolicyDocument:
@@ -132,7 +132,7 @@ Resources:
     Properties:
       TemplateURL: !Sub "${TemplateBucketBaseUrl}/fragments/api-gw-expose-service.yaml"
       Parameters:
-        MicroServiceUniqueName: !Sub '${ProjectName}-example2'
-        ServiceApiPath: 'example2'
+        MicroServiceUniqueName: !Sub '${ProjectName}-example${MicroserviceNumber}'
+        ServiceApiPath: 'example${MicroserviceNumber}'
         NetworkLoadBalancerLink: !Ref NetworkLoadBalancerLink
         ApplicationLoadBalancerDomain: !Ref ApplicationLoadBalancerDomain
