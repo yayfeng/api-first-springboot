@@ -13,7 +13,7 @@ Parameters:
 
   MicroserviceNumber:
     Type: Number
-    Description: 'Disambiguation for load balancer rules'
+    Description: 'Disambiguation useful for load balancer rules'
 
   TemplateBucketBaseUrl:
     Type: String

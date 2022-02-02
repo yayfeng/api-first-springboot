@@ -6,6 +6,10 @@ Parameters:
     Type: String
     Description: Nome dell'ambiente destinazione
 
+  MicroserviceNumber:
+    Type: Number
+    Description: 'Disambiguation useful for load balancer rules'
+
   TemplateBucketBaseUrl:
     Type: String
     Description: URL da cui caricare i frammenti di template di infrastruttura
@@ -15,7 +19,7 @@ Resources:
   Keyspace:
     Type: AWS::Cassandra::Keyspace
     Properties:
-      KeyspaceName: !Sub '${ProjectName}_simple'
+      KeyspaceName: !Sub '${ProjectName}_simple${MicroserviceNumber}'
 
   SimpleTable:
     Type: AWS::Cassandra::Table
