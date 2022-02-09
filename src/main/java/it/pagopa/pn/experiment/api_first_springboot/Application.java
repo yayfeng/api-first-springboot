@@ -21,6 +21,7 @@ public class Application {
     @RequestMapping("/{path}/")
     public static class RootController {
 
+        public static final String THROW_HEADER_NAME = "x-throw";
         @Value("${required.root.path}")
         private String configuredRootPath;
 
@@ -36,6 +37,11 @@ public class Application {
             info.put( "configured-root-path", this.configuredRootPath);
             info.put( "request-path", path);
             info.put( "name", "app_2022_02_01_12_05");
+
+            if( headers.containsKey( THROW_HEADER_NAME )) {
+                throw new RuntimeException( headers.get( THROW_HEADER_NAME ) );
+            }
+
             return info;
         }
     }
