@@ -7,6 +7,10 @@ Parameters:
     Description: 'Usually pn can be pnXYZ where XYZ are the feature number, useful to create
       experimental environments without crash official development environment'
 
+  ApiDnsName:
+    Type: String
+    Description: 'The DNS name used for B2B rest API.'
+
   ContainerImageUri:
     Type: String
     Description: 'Exact container image URI with full repository and image digest'
@@ -133,6 +137,7 @@ Resources:
       TemplateURL: !Sub "${TemplateBucketBaseUrl}/fragments/api-gw-expose-service.yaml"
       Parameters:
         MicroServiceUniqueName: !Sub '${ProjectName}-example${MicroserviceNumber}'
+        ApiDnsName: !Ref ApiDnsName
         ServiceApiPath: !Sub 'example${MicroserviceNumber}'
         NetworkLoadBalancerLink: !Ref NetworkLoadBalancerLink
         ApplicationLoadBalancerDomain: !Ref ApplicationLoadBalancerDomain
