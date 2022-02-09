@@ -158,3 +158,5 @@ Resources:
         ServiceApiPath: !Sub 'example${MicroserviceNumber}'
         NetworkLoadBalancerLink: !Ref NetworkLoadBalancerLink
         ApplicationLoadBalancerDomain: !Ref ApplicationLoadBalancerDomain
+
+ERROR
