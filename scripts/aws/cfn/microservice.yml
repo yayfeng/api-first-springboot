@@ -154,7 +154,7 @@ Resources:
       Parameters:
         MicroServiceUniqueName: !Sub '${ProjectName}-example${MicroserviceNumber}'
         IntendedUsage: WEB
-        DnsName: !Ref ApiDnsName
+        DnsName: !Ref WebApiDnsName
         ServiceApiPath: !Sub 'example${MicroserviceNumber}'
         NetworkLoadBalancerLink: !Ref NetworkLoadBalancerLink
         ApplicationLoadBalancerDomain: !Ref ApplicationLoadBalancerDomain
