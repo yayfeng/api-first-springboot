@@ -142,7 +142,7 @@ Resources:
       Parameters:
         MicroServiceUniqueName: !Sub '${ProjectName}-example${MicroserviceNumber}'
         IntendedUsage: B2B
-        ApiDnsName: !Ref ApiDnsName
+        DnsName: !Ref ApiDnsName
         ServiceApiPath: !Sub 'example${MicroserviceNumber}'
         NetworkLoadBalancerLink: !Ref NetworkLoadBalancerLink
         ApplicationLoadBalancerDomain: !Ref ApplicationLoadBalancerDomain
@@ -154,7 +154,7 @@ Resources:
       Parameters:
         MicroServiceUniqueName: !Sub '${ProjectName}-example${MicroserviceNumber}'
         IntendedUsage: WEB
-        ApiDnsName: !Ref ApiDnsName
+        DnsName: !Ref ApiDnsName
         ServiceApiPath: !Sub 'example${MicroserviceNumber}'
         NetworkLoadBalancerLink: !Ref NetworkLoadBalancerLink
         ApplicationLoadBalancerDomain: !Ref ApplicationLoadBalancerDomain
