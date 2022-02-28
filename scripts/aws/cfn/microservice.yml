@@ -7,14 +7,6 @@ Parameters:
     Description: 'Usually pn can be pnXYZ where XYZ are the feature number, useful to create
       experimental environments without crash official development environment'
 
-  ApiDnsName:
-    Type: String
-    Description: 'The DNS name used for B2B rest API.'
-
-  WebApiDnsName:
-    Type: String
-    Description: 'The DNS name used for WEB rest API.'
-
   ContainerImageUri:
     Type: String
     Description: 'Exact container image URI with full repository and image digest'
@@ -133,31 +125,4 @@ Resources:
             Resource:
               - '*'
 
-
-  # Expose Example public API with API-GW
-  ExampleMicroservicePublicAPI:
-    Type: AWS::CloudFormation::Stack
-    Properties:
-      TemplateURL: !Sub "${TemplateBucketBaseUrl}/fragments/api-gw-expose-service.yaml"
-      Parameters:
-        MicroServiceUniqueName: !Sub '${ProjectName}-example${MicroserviceNumber}'
-        IntendedUsage: B2B
-        DnsName: !Ref ApiDnsName
-        ProjectName: !Ref ProjectName
-        ServiceApiPath: !Sub 'example${MicroserviceNumber}'
-        NetworkLoadBalancerLink: !Ref NetworkLoadBalancerLink
-        ApplicationLoadBalancerDomain: !Ref ApplicationLoadBalancerDomain
-
-  ExampleMicroservicePublicWebAPI:
-    Type: AWS::CloudFormation::Stack
-    Properties:
-      TemplateURL: !Sub "${TemplateBucketBaseUrl}/fragments/api-gw-expose-service.yaml"
-      Parameters:
-        MicroServiceUniqueName: !Sub '${ProjectName}-example${MicroserviceNumber}'
-        IntendedUsage: WEB
-        DnsName: !Ref WebApiDnsName
-        ProjectName: !Ref ProjectName
-        ServiceApiPath: !Sub 'example${MicroserviceNumber}'
-        NetworkLoadBalancerLink: !Ref NetworkLoadBalancerLink
-        ApplicationLoadBalancerDomain: !Ref ApplicationLoadBalancerDomain
 
