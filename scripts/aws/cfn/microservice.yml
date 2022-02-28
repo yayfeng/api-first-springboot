@@ -58,27 +58,6 @@ Parameters:
 
 Resources:
 
-  # Example microservice
-  ExampleMicroservice:
-    Type: AWS::CloudFormation::Stack
-    Properties:
-      TemplateURL: !Sub "${TemplateBucketBaseUrl}/fragments/ecs-service.yaml"
-      Parameters:
-        MicroServiceUniqueName: !Sub '${ProjectName}-example${MicroserviceNumber}'
-        CpuValue: 1024
-        MemoryAmount: 2GB
-        ContainerImageURI: !Sub '${ContainerImageUri}'
-        ContainerEnvEntry1: !Sub 'PROJECT_NAME=${ProjectName}'
-        ContainerEnvEntry2: !Sub 'QUEUE_NAME=${DeliveryPushInputsQueueName}'
-        ContainerEnvEntry3: !Sub 'REQUIRED_ROOT_PATH=example${MicroserviceNumber}'
-        ContainerEnvEntry4: !Sub 'BucketName=${DocumentBucketName}'
-        MappedPaths: !Sub '/example${MicroserviceNumber}/*,/example${MicroserviceNumber}-private/*'
-        ECSClusterName: !Ref ECSClusterName
-        Subnets: !Ref SubnetsIds
-        VpcId: !Ref VpcId
-        LoadBalancerListenerArn: !Ref ApplicationLoadBalancerListenerArn
-        LoadbalancerRulePriority: !Ref MicroserviceNumber
-
   # Grant operational rights to Example microservice
   ExampleMicroserviceTaskPolicy:
     Type: AWS::IAM::Policy
